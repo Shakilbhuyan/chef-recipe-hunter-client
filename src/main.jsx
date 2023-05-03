@@ -8,15 +8,22 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import Layout from './Components/Layout/Layout.jsx';
+import Error from './Components/Error/Error.jsx';
 
 const router = createBrowserRouter([
     {
       path:'/',
       element:<Layout></Layout>,
       children:[
-        {}
+        {
+          path:'/error',
+          element:<Error></Error>
+        }
       ]
-      
+    },
+    {
+     path:'*',
+     element:<Error></Error>
     }
 ])
 
