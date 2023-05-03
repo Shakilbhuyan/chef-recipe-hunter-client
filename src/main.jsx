@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import Layout from './Components/Layout/Layout.jsx';
 import Error from './Components/Error/Error.jsx';
+import Home from './Components/Home/Home.jsx';
 
 const router = createBrowserRouter([
     {
@@ -16,8 +17,9 @@ const router = createBrowserRouter([
       element:<Layout></Layout>,
       children:[
         {
-          path:'/error',
-          element:<Error></Error>
+          path:'/',
+          element:<Home></Home>,
+          loader: ( ) => fetch('http://localhost:4000/chef')
         }
       ]
     },
