@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 const LeftNav = () => {
     const [recipes, setRecipes] = useState([]);
     useEffect(()=>{
-      fetch('http://localhost:4000/chef')
+      fetch('https://chef-hunter-server-shakilbhuyan.vercel.app/chef')
       .then(res => res.json())
       .then(data=> setRecipes(data))
     },[])

@@ -24,57 +24,57 @@ import Blog from './Components/Blog/Blog.jsx';
 
 
 const router = createBrowserRouter([
-    {
-      path:'/',
-      element:<Layout></Layout>,
-      children:[
-        {
-          path:'/',
-          element:<Home></Home>,
-          loader: ( ) => fetch('http://localhost:4000/chef')
-        }
-      ]
-    },
-    {
-    path:'chef',
-    element:<DetailsLayout></DetailsLayout>,
-    children:[
+  {
+    path: '/',
+    element: <Layout></Layout>,
+    children: [
       {
-        path:':id',
-        element:<PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
-        loader: ({params})=>fetch(`http://localhost:4000/chef/${params.id}`)
+        path: '/',
+        element: <Home></Home>,
+        loader: () => fetch('https://chef-hunter-server-shakilbhuyan.vercel.app/chef')
       }
     ]
-    },
-    {
-     path:'/',
-     element:<LoginLayout></LoginLayout>,
-     children:[
+  },
+  {
+    path: 'chef',
+    element: <DetailsLayout></DetailsLayout>,
+    children: [
       {
-        path:'/login',
-        element:<Login></Login>
-      },
-      {
-        path:'/register',
-        element:<Register></Register>
-      },
-      {
-        path:'/blog',
-        element:<Blog></Blog>
+        path: ':id',
+        element: <PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
+        loader: ({ params }) => fetch(`https://chef-hunter-server-shakilbhuyan.vercel.app/chef/${params.id}`)
       }
-     ]
-    },
-    {
-     path:'*',
-     element:<Error></Error>
-    }
+    ]
+  },
+  {
+    path: '/',
+    element: <LoginLayout></LoginLayout>,
+    children: [
+      {
+        path: '/login',
+        element: <Login></Login>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
+      },
+      {
+        path: '/blog',
+        element: <Blog></Blog>
+      }
+    ]
+  },
+  {
+    path: '*',
+    element: <Error></Error>
+  }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-   <AuthProvider>
-   <RouterProvider router={router} />
-   </AuthProvider>
+  <React.StrictMode>
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
     <ToastContainer></ToastContainer>
   </React.StrictMode>,
 )
