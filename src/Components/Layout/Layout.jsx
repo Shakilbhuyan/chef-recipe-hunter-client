@@ -5,12 +5,14 @@ import { Outlet } from 'react-router-dom';
 import LeftNav from '../LeftNav/LeftNav';
 import RightNav from '../RightNav/RightNav';
 import Footer from '../Footer/Footer';
+import Header from '../Header/Header';
 
 
 const Layout = () => {
     return (
         <div>
             <Navber></Navber>
+            <Header></Header>
            <Container>
             <Row>
                 <Col lg={3}>

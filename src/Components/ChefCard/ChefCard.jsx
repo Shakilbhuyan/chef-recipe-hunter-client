@@ -18,7 +18,7 @@ const ChefCard = ({chef}) => {
                                    <p>Number of Recipes: {num_of_recipes}</p>
                                    <p><FaThumbsUp></FaThumbsUp> {likes}</p>
                                 </Card.Text>
-                                <Button variant="danger"><Link className='text-decoration-none text-white' to={`/recipe/${id}`}>View Recipes</Link></Button>
+                                <Button variant="danger"><Link className='text-decoration-none text-white' to={`/chef/${id}`}>View Recipes</Link></Button>
                             </Card.Body>
                         </Card>
                     </Col>

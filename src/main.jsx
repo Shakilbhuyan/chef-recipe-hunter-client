@@ -10,6 +10,8 @@ import {
 import Layout from './Components/Layout/Layout.jsx';
 import Error from './Components/Error/Error.jsx';
 import Home from './Components/Home/Home.jsx';
+import DetailsLayout from './Components/Layout/DetailsLayout.jsx';
+import ViewDetails from './Components/ViewDetails/ViewDetails.jsx';
 
 const router = createBrowserRouter([
     {
@@ -22,6 +24,17 @@ const router = createBrowserRouter([
           loader: ( ) => fetch('http://localhost:4000/chef')
         }
       ]
+    },
+    {
+    path:'chef',
+    element:<DetailsLayout></DetailsLayout>,
+    children:[
+      {
+        path:':id',
+        element:<ViewDetails></ViewDetails>,
+        loader: ({params})=>fetch(`http://localhost:4000/chef/${params.id}`)
+      }
+    ]
     },
     {
      path:'*',

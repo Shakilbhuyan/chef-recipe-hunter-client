@@ -1,8 +1,6 @@
 import React from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import Header from '../Header/Header';
-
 const Navber = () => {
     return (
         <div>
@@ -20,7 +18,7 @@ const Navber = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-            <Header></Header>
+        
         </div>
     );
 };
