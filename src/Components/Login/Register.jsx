@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 
 const Register = () => {
@@ -15,13 +16,18 @@ const Register = () => {
         const email = form.email.value;
         const password = form.password.value;
         const photo = form.photo.value;
+        if(password.length < 6){
+            toast.error("Please Atlest 6 charater");
+            return;
+        }
         createUser(email, password)
             .then((result) => {
                 const createdUser = result.user;
                 form.reset();
+                toast.success('Successfully Registered')
             })
             .catch((error) => {
-                console.log(error)
+                toast.error(`${error}`)
             })
     };
     const handleAccepted = (event)=>{

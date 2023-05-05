@@ -2,9 +2,10 @@ import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Provider/AuthProvider';
+import { toast } from 'react-toastify';
 
 const Login = () => {
-    const { loginUser} = useContext(AuthContext);
+    const { loginUser,  GoogleSignIn, GitSignIn} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -19,9 +20,26 @@ const Login = () => {
             const loggedUser = result.user;
             form.reset();
             navigate(from, {replace:true});
+            toast.success("Login successfully")
         })
-        .catch(error => console.log(error))
-    } 
+        .catch(error =>{
+            toast.error(`${error}`)
+        })
+    } ;
+    const handleGoogleSignIn = ()=>{
+        GoogleSignIn()
+        .then((result)=>{
+            const loggeduser = result.user
+        })
+        .catch(error=>console.log(error))
+    }
+    const handleGitSignIn = ()=>{
+        GitSignIn()
+        .then((result)=>{
+            const loggeduser = result.user
+        })
+        .catch(error=>console.log(error))
+    }
     return (
         <div>
             <Container style={{ boxShadow: '0px 0px 5px rgba(255, 0, 0, 0.5)' }} className="mx-auto w-50  mt-4 p-4">
@@ -59,6 +77,8 @@ const Login = () => {
 
                     </Form.Text>
                 </Form>
+                <Button className='mt-4' onClick={handleGoogleSignIn} variant='danger'>SignIn with Google</Button><br />
+                <Button className='mt-1' onClick={handleGitSignIn} variant='danger'>SignIn with GitHub</Button>
             </Container>
         </div>
     );
