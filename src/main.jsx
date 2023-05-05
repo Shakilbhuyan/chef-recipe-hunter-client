@@ -18,6 +18,7 @@ import LoginLayout from './Components/Layout/LoginLayout.jsx';
 import AuthProvider from './Provider/AuthProvider.jsx';
 import Login from './Components/Login/Login.jsx';
 import Register from './Components/Login/Register.jsx';
+import PrivateRoute from './Components/route/PrivateRoute.jsx';
 
 
 
@@ -39,7 +40,7 @@ const router = createBrowserRouter([
     children:[
       {
         path:':id',
-        element:<ViewDetails></ViewDetails>,
+        element:<PrivateRoute><ViewDetails></ViewDetails></PrivateRoute>,
         loader: ({params})=>fetch(`http://localhost:4000/chef/${params.id}`)
       }
     ]

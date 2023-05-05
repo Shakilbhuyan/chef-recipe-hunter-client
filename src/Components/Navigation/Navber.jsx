@@ -1,7 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-const Navber = () => {
+import { AuthContext } from '../../Provider/AuthProvider';
+const Navber = () =>{
+    const {user, logOut} = useContext(AuthContext);
+    const handleLogOut =()=>{
+        logOut()
+        .then(()=>{})
+        .catch(error => console.log(error))
+    }
     return (
         <div>
             <Navbar bg="danger" expand="sm">
@@ -13,7 +20,9 @@ const Navber = () => {
                             <Link className='text-decoration-none text-white' to="/">Home</Link>
                             <Link  className='text-decoration-none text-white'  to="/blog">Blog</Link>
                             <Link  className='text-decoration-none text-white'  to="/contract">Contract</Link>
-                            <Button variant="warning"><Link className='text-decoration-none text-white' to="/login">Login</Link></Button>
+                           {user ? <Button onClick={handleLogOut} variant='warning'>LogOut</Button> :
+                            <Button variant="warning"><Link className='text-decoration-none text-white' to="/login">Login</Link></Button> 
+                            }
                         </Nav>
                     </Navbar.Collapse>
                 </Container>
