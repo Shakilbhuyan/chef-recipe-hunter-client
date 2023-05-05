@@ -13,7 +13,7 @@ const Navber = () => {
                             <Link className='text-decoration-none text-white' to="/">Home</Link>
                             <Link  className='text-decoration-none text-white'  to="/blog">Blog</Link>
                             <Link  className='text-decoration-none text-white'  to="/contract">Contract</Link>
-                            <Button variant="warning">Login</Button>
+                            <Button variant="warning"><Link className='text-decoration-none text-white' to="/login">Login</Link></Button>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

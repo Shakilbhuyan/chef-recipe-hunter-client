@@ -14,6 +14,11 @@ import DetailsLayout from './Components/Layout/DetailsLayout.jsx';
 import ViewDetails from './Components/ViewDetails/ViewDetails.jsx';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import LoginLayout from './Components/Layout/LoginLayout.jsx';
+import AuthProvider from './Provider/AuthProvider.jsx';
+import Login from './Components/Login/Login.jsx';
+import Register from './Components/Login/Register.jsx';
+
 
 
 const router = createBrowserRouter([
@@ -40,14 +45,30 @@ const router = createBrowserRouter([
     ]
     },
     {
+     path:'/',
+     element:<LoginLayout></LoginLayout>,
+     children:[
+      {
+        path:'/login',
+        element:<Login></Login>
+      },
+      {
+        path:'/register',
+        element:<Register></Register>
+      }
+     ]
+    },
+    {
      path:'*',
      element:<Error></Error>
     }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
+    <React.StrictMode>
+   <AuthProvider>
+   <RouterProvider router={router} />
+   </AuthProvider>
     <ToastContainer></ToastContainer>
   </React.StrictMode>,
 )
