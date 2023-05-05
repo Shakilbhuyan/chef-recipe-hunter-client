@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Card, Table } from 'react-bootstrap';
 import { FaStar, FaThumbsUp } from 'react-icons/fa';
 import { useLoaderData } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const ViewDetails = () => {
     const [buttonStates, setButtonStates] = useState({
@@ -16,8 +17,9 @@ const ViewDetails = () => {
 const handleDisable = (button)=>{
     setButtonStates(prevState => ({
         ...prevState,
-        [button]: true
+        [button]: true ,
       }));
+      toast("This Recipe added Your favouit List")
 }
 
     return (
@@ -28,9 +30,9 @@ const handleDisable = (button)=>{
                     <Card.Body>
                         <Card.Title>Name: {chef_name}</Card.Title>
                         <Card.Text className='text-danger'>
-                            <p>Expricience: {years_of_experience}</p>
-                            <p>Number of Recipes: {num_of_recipes}</p>
-                            <p><FaThumbsUp></FaThumbsUp> {likes}</p>
+                            <>Expricience: {years_of_experience}</>
+                            <>Number of Recipes: {num_of_recipes}</>
+                            <><FaThumbsUp></FaThumbsUp> {likes}</>
                         </Card.Text>
                     </Card.Body>
                 </Card>

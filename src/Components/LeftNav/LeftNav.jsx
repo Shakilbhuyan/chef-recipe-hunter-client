@@ -1,9 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const LeftNav = () => {
+    const [recipes, setRecipes] = useState([]);
+    useEffect(()=>{
+      fetch('http://localhost:4000/chef')
+      .then(res => res.json())
+      .then(data=> setRecipes(data))
+    },[])
     return (
         <div>
-            <h3>This is Left nav</h3>
+            <h3 className='text-danger'>All Recipes</h3>
+            {
+         recipes.map(recipe => <div className='fw-bold' key={recipe.id}>
+            <li>{recipe.list_of_recipes.recipe1.recipe}</li>
+            <li>{recipe.list_of_recipes.recipe2.recipe}</li>
+            <li>{recipe.list_of_recipes.recipe3.recipe}</li>
+         </div>)
+            }
         </div>
     );
 };
