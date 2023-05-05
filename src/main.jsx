@@ -19,6 +19,7 @@ import AuthProvider from './Provider/AuthProvider.jsx';
 import Login from './Components/Login/Login.jsx';
 import Register from './Components/Login/Register.jsx';
 import PrivateRoute from './Components/route/PrivateRoute.jsx';
+import Blog from './Components/Blog/Blog.jsx';
 
 
 
@@ -56,6 +57,10 @@ const router = createBrowserRouter([
       {
         path:'/register',
         element:<Register></Register>
+      },
+      {
+        path:'/blog',
+        element:<Blog></Blog>
       }
      ]
     },
